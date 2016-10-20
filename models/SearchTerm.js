@@ -10,14 +10,10 @@ const searchTermSchema = new Schema({
     type: String,
     required: true
   },
-  lastSearched: {
+  searchDate: {
     type: Date,
     default: Date.now,
     required: true
-  },
-  searchCount: {
-    type: Number,
-    default: 1
   }
 });
 

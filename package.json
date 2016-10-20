@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "export HOST='http://localhost:5000/' && node index.js"
+    "dev": "export HOST='http://localhost:5000/' && nodemon index.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -28,5 +28,8 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }

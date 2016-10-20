@@ -3,9 +3,16 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
-
+// Could close off our API to rest of world on next line in cors parameters
+const corsOptions = {
+  origin: true,
+  allowedHeaders: ['Content-Type', 'Access-Control-Allow-Origin'],
+  credentials: true,
+  preflightContinue: true
+};
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fcc-image-search-abstraction');
 
 app.use(morgan('combined')); // Middleware for logging

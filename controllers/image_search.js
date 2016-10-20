@@ -1,3 +1,4 @@
+const request = require('request');
 const SearchTerm = require('../models/SearchTerm');
 
 exports.getRecentSearches = function(req, res) {
@@ -19,7 +20,11 @@ exports.searchImages = function(req, res) {
   const newSearchTerm = new SearchTerm({ searchTerm });
   newSearchTerm.save();
   // Make a request to Google Custom Search API for term at page=offset
+  request('https://www.googleapis.com/customsearch/v1?q=funny+lolcats&cx=001871838372440385157%3A7s964won_2a&num=10&start=1&key=' + process.env.GOOGLE_API_KEY, function(err, response, body) {
+    if (err) return res.status(500).send({ error: err });
     // Return an array of objects
+    // console.log(body);
+    res.json(JSON.parse(body));
+  });
 
-  res.json({ message: 'imagesearch' });
 };

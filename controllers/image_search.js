@@ -28,8 +28,8 @@ exports.searchImages = function(req, res) {
     // Format search results
     const results = JSON.parse(body).items.reduce((acc, item) => {
       acc.push({
-        url: item.pagemap.cse_image[0].src,
-        thumbnail: item.pagemap.cse_thumbnail[0].src,
+        url: item.pagemap.cse_image && item.pagemap.cse_image[0] && item.pagemap.cse_image[0].src,
+        thumbnail: item.pagemap.cse_thumbnail && item.pagemap.cse_thumbnail[0] && item.pagemap.cse_thumbnail[0].src,
         snippet: item.snippet,
         title: item.title,
         context: item.link

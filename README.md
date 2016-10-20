@@ -25,7 +25,7 @@ Like:
 }
 ```
 ### Example usage:
-to get a list of recent search terms  
+To get a list of recent search terms:  
 `https://fcc-image-search-abstraction-zklinger.herokuapp.com/api/latest/imagesearch/`
 
 Built as a Node.js app using [Express 4](http://expressjs.com/).

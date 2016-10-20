@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Use native promises
+mongoose.Promise = global.Promise;
+
 // Define our model
 const searchTermSchema = new Schema({
   searchTerm: {

@@ -1,4 +1,4 @@
-const searchTerms = require('./controllers/searchTerms');
+const ImageSearch = require('./controllers/image_search');
 
 module.exports = function(app) {
   // app.get('/', requireAuth, function(req, res) {
@@ -9,6 +9,8 @@ module.exports = function(app) {
     res.render('pages/index');
   });
 
-  app.post('/api/imagesearch/', searchTerms.create);
+  app.get('/api/imagesearch/*', ImageSearch.searchImages);
+
+  app.get('/api/latest/imagesearch/', ImageSearch.getRecentSearches);
   // app.param('postId', Blogger.blogPostById);
 };

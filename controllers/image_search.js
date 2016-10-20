@@ -1,10 +1,10 @@
 const SearchTerm = require('../models/SearchTerm');
 
 exports.getRecentSearches = function(req, res) {
-  // See if a shortURL with the given slug exists
+  // Find 10 most recent searchTerms
   SearchTerm.find({}, { '_id': 0, '__v': 0 }).sort({ searchDate: -1 }).limit(10).exec(function(err, searchTerms) {
     if (err) return res.status(500).send({ error: err });
-
+    // Return searchTerms
     res.json(searchTerms);
   });
 };
@@ -18,7 +18,6 @@ exports.searchImages = function(req, res) {
   // Add search term to the DB
   const newSearchTerm = new SearchTerm({ searchTerm });
   newSearchTerm.save();
-  // TODO: We are here.  Need to create new Google Project, get new API key, etc.
   // Make a request to Google Custom Search API for term at page=offset
     // Return an array of objects
 

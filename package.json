@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "export HOST='http://localhost:5000/' && nodemon index.js"
+    "dev": "heroku local dev"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

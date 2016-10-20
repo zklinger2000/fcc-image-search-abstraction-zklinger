@@ -18,10 +18,10 @@ Like:
 ### Example output:
 ```
 {
-  "url": "http://google.com/somephot/here/",
-  "snippet": "lolcats are funny",
-  "thumbnail": "http://google.com/somephot/here/",
-  "context": "http://google.com/somephot/here/"
+  "url": "http://google.com/dsfa/adsfdfsasd?234/234234/2/ddsfsfd.jpg",
+  "snippet": "Funny lolcats (photo...",
+  "thumbnail": "http://google.com/dsfa/adsfdfsasd?234/234234/2/ddsfsfd.jpg",
+  "context": "https://fcc-image-search-zklinger.herokuapp.com/25",
 }
 ```
 ### Example usage:

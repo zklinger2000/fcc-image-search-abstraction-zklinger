@@ -11,8 +11,8 @@ exports.getRecentSearches = function(req, res) {
 };
 
 exports.searchImages = function(req, res) {
-  const searchTerm = req.params['0'] && req.params['0'].slice(0,128);
-  const offset = req.query && req.query.offset || 0;
+  const searchTerm = req.params['0'] && req.params['0'].slice(0,96);
+  const offset = req.query && Number(req.query.offset) || 1;
   console.log('searchTerm:', searchTerm);
   console.log('offset:', offset);
 
@@ -20,11 +20,25 @@ exports.searchImages = function(req, res) {
   const newSearchTerm = new SearchTerm({ searchTerm });
   newSearchTerm.save();
   // Make a request to Google Custom Search API for term at page=offset
-  request('https://www.googleapis.com/customsearch/v1?q=funny+lolcats&cx=001871838372440385157%3A7s964won_2a&num=10&start=1&key=' + process.env.GOOGLE_API_KEY, function(err, response, body) {
+  request('https://www.googleapis.com/customsearch/v1?q=' + searchTerm +
+          '&cx=' + process.env.SEARCH_ENGINE_ID +
+          '&num=10&safe=high&start=' + offset +
+          '&key=' + process.env.GOOGLE_API_KEY, function(err, response, body) {
     if (err) return res.status(500).send({ error: err });
-    // Return an array of objects
-    // console.log(body);
-    res.json(JSON.parse(body));
+    // Format search results
+    const results = JSON.parse(body).items.reduce((acc, item) => {
+      acc.push({
+        url: item.pagemap.cse_image[0].src,
+        thumbnail: item.pagemap.cse_thumbnail[0].src,
+        snippet: item.snippet,
+        title: item.title,
+        context: item.link
+      });
+      return acc;
+    }, []);
+    // Return an array of formatted search results
+    res.contentType('application/json');
+    res.send(results);
   });
 
 };

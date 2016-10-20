@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>API Basejump: Image Search Abstraction Layer</h1>
+    <blockquote>
+        User stories:
+        <ol>
+            <li>I can get the image URLs, alt text and page urls for a set of images relating to a given search string.</li>
+            <li>I can paginate through the responses by adding a <code>?offset=2</code> parameter to the URL.</li>
+            <li>I can get a list of the most recently submitted search strings.</li>
+        </ol>
+    </blockquote>
+    <h2>Example usage:</h2>
+    <code>https://fcc-image-search-abstraction-zklinger.herokuapp.com/url/</code> + <code>a properly formatted URL</code><br/>
+    Like:<br/>
+    <a href="url/http://google.com">https://fcc-image-search-abstraction-zklinger.herokuapp.com/url/http://google.com</a><br/>
+    <h2>Example output:</h2>
+    <pre>{
+  "url": "http://google.com/dsfa/adsfdfsasd?234/234234/2/ddsfsfd.jpg",
+  "snippet": "Funny lolcats (photo...",
+  "thumbnail": "http://google.com/dsfa/adsfdfsasd?234/234234/2/ddsfsfd.jpg",
+  "context": "https://fcc-image-search-abstraction-zklinger.herokuapp.com/25",
+}</pre>
+</div>
+
+</body>
+</html>
